@@ -23,3 +23,5 @@ The Cortier Design MCP operates on the current Figma file. Connect with a `corti
 5. Apply the operation through Figma, inspect the result, and report failures with node names and IDs.
 
 Never paste access tokens into prompts or logs. Never send full file contents when node IDs and compact structural targets are sufficient.
+
+Screen audits are group-aware. Read-only audits may inspect both `Pantallas` and `Prototipos`, but only `Pantallas` can be treated as canonical. Fail closed when group membership is ambiguous, a screen sits outside both groups, or a logical screen identifier repeats within one group. Prototype checks are review evidence only and must never create canonical reconciliation evidence.

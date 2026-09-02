@@ -14,6 +14,13 @@ Use the separately installed official Figma plugin. Ask the user to install or c
 
 Treat components, variables, styles, and modes in the design-system file as authoritative. Use published instances in product screens whenever a matching component exists. Never detach instances merely to make editing easier.
 
+The product-screens file has two page groups separated by divider pages:
+
+- `Pantallas` contains the canonical, approved product screens.
+- `Prototipos` contains temporary developer proposals under UX/UI review.
+
+Designers work primarily in `Pantallas`. Never create a page or initiate a screen in `Prototipos`. Modify an existing prototype only while actively reviewing it with development. Page names intentionally repeat across groups, so always identify a target by group, page, and logical screen identifier rather than by page name alone.
+
 ## Workflow
 
 1. Confirm the target file, page, and frame before writing.
