@@ -21,6 +21,7 @@ jobs:
       - name: Validate marketplace and plugin
         run: node .github/scripts/validate.mjs
       - name: Scan current files and Git history for secrets
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: trufflesecurity/trufflehog@v3.97.1
+        with:
+          path: ./
+          extra_args: --results=verified,unknown
