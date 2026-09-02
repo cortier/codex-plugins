@@ -1,0 +1,31 @@
+{
+  "name": "cortier-design",
+  "version": "0.1.0+codex.20260902000547",
+  "description": "Cortier's Figma-first workflows and design-quality tools for product designers.",
+  "author": {
+    "name": "Cortier"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Cortier Design",
+    "shortDescription": "Design and audit Cortier interfaces in Figma",
+    "longDescription": "Cortier workflows for building Figma design systems and screens, running deterministic layout and structural audits, and reflowing documentation. Install the official Figma and Mobbin plugins separately for their integrations.",
+    "developerName": "Cortier",
+    "category": "Creativity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Audit this Figma design-system page for spacing, containment, alignment, and overlaps",
+      "Reflow this Figma design-system documentation using Cortier's layout rules",
+      "Create a product screen in Figma using canonical design-system instances"
+    ],
+    "composerIcon": "./assets/cortier.jpeg",
+    "logo": "./assets/cortier.jpeg",
+    "logoDark": "./assets/cortier.jpeg",
+    "screenshots": []
+  },
+  "mcpServers": "./.mcp.json"
+}

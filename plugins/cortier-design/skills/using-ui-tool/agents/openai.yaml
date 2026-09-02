@@ -1,0 +1,3 @@
+interface:
+  display_name: "Using UI Tool"
+  short_description: "Audit and reflow Figma layouts"
