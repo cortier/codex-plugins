@@ -1,0 +1,9 @@
+{
+  "name": "@cortier/codex-plugins",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-installation.mjs",
+    "validate": "node .github/scripts/validate.mjs"
+  }
+}

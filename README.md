@@ -1,0 +1,12 @@
+# Cortier Codex Plugins
+
+Public marketplace for Cortier plugins.
+
+<!-- BEGIN GENERATED INSTALLATION -->
+## Install
+
+[Install Cortier Design](codex://new?prompt=Set+up+the+complete+Cortier+Design+environment.%0A%0AAdd+the+public+Cortier+plugin+marketplace+from+%60https%3A%2F%2Fgithub.com%2Fcortier%2Fcodex-plugins%60+using+its+default+branch.+Install+and+enable+every+plugin+in+this+list%3A%0A%0A-+Cortier+Design+%E2%80%94+install+from+the+Cortier+marketplace.%0A++-+User+instruction%3A+The+media%40cortier.com+account+must+be+used+to+authenticate+to+the+MCP+server.%0A-+Figma+%E2%80%94+install+from+the+Plugins+Directory.%0A++-+User+instruction%3A+The+media%40cortier.com+account+must+be+used+to+authenticate+to+the+MCP+server.%0A-+Mobbin+%E2%80%94+install+from+the+Plugins+Directory.%0A++-+User+instruction%3A+The+media%40cortier.com+account+must+be+used+to+authenticate+to+the+MCP+server.%0A%0AThe+instructions+beneath+each+plugin+are+requirements+to+communicate+to+the+user+at+the+relevant+point+in+setup.+Explain+them+in+clear%2C+simple+language.+Do+not+present+technical+implementation+details%2C+select+an+account+for+the+user%2C+or+treat+the+user%27s+account+as+an+account+the+agent+controls.%0A%0AInitiate+every+required+OAuth+flow+and+wait+for+the+user+to+complete+each+provider-controlled+authorization+interaction+before+continuing.+After+each+OAuth+flow+returns+control%2C+verify+the+connection+before+proceeding.+When+authentication+is+complete%2C+list+the+MCP+tools+of+every+installed+plugin.+Report+installation+complete+only+if+all+3+plugins+are+installed+and+enabled%2C+every+required+connection+is+authenticated%2C+and+all+tools+have+been+listed.+Otherwise%2C+identify+the+incomplete+plugin+and+continue+its+setup.)
+
+If the button does not open Codex, copy the prompt from [Cortier Design installation instructions](./plugins/cortier-design/INSTALL.md) into a new Codex conversation.
+
+<!-- END GENERATED INSTALLATION -->
