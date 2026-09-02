@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Open installation in Codex</title>
+    <style>
+      :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+      body { display: grid; min-height: 100vh; margin: 0; place-items: center; }
+      main { box-sizing: border-box; max-width: 42rem; padding: 2rem; text-align: center; }
+      a { display: inline-block; margin: 1rem 0; padding: 0.75rem 1rem; border-radius: 0.5rem; color: white; background: #1769e0; font-weight: 600; text-decoration: none; }
+      textarea { box-sizing: border-box; width: 100%; min-height: 10rem; padding: 0.75rem; }
+      [hidden] { display: none; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Opening Codex…</h1>
+      <p id="status">If Codex does not open automatically, use the button below.</p>
+      <a id="open" href="#" hidden>Open in Codex</a>
+      <section id="fallback" hidden>
+        <p>Alternatively, copy this prompt into a new Codex conversation:</p>
+        <textarea id="prompt" readonly></textarea>
+      </section>
+    </main>
+    <script>
+      const status = document.querySelector('#status');
+      const open = document.querySelector('#open');
+      const fallback = document.querySelector('#fallback');
+      const prompt = document.querySelector('#prompt');
+      try {
+        const target = decodeURIComponent(location.hash.slice(1));
+        const url = new URL(target);
+        const keys = [...url.searchParams.keys()];
+        if (url.protocol !== 'codex:' || url.hostname !== 'new' || keys.length !== 1 || keys[0] !== 'prompt' || !url.searchParams.get('prompt')) throw new Error('Invalid installation link');
+        open.href = url.toString();
+        open.hidden = false;
+        prompt.value = url.searchParams.get('prompt');
+        fallback.hidden = false;
+        setTimeout(() => { location.href = url.toString(); }, 100);
+      } catch {
+        document.querySelector('h1').textContent = 'Invalid installation link';
+        status.textContent = 'Return to the Cortier plugin marketplace and use a current installation link.';
+      }
+    </script>
+  </body>
+</html>
