@@ -56,7 +56,7 @@ for (const entry of marketplace.plugins ?? []) {
   writeFileSync(installPath, `${prompt}\n`);
   const url = new URL('codex://new');
   url.searchParams.set('prompt', prompt);
-  const launchUrl = `https://cortier.github.io/codex-plugins/launch.html#${encodeURIComponent(url.toString())}`;
+  const launchUrl = `https://plugins.cortier.com/design#${encodeURIComponent(url.toString())}`;
   if (launchUrl.length > 4000) fail(`Installation link for ${entry.name} exceeds 4000 characters`);
   generated.push({ displayName: primaryName.trim(), installPath: `plugins/${entry.name}/INSTALL.md`, url: launchUrl });
 }

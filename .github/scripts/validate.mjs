@@ -44,6 +44,6 @@ for (const required of ['cortier/codex-plugins', 'Cortier Design', 'Figma', 'Mob
 }
 const installation = readJson(join(pluginRoot, 'installation.json'));
 if (!Array.isArray(installation.dependencies) || installation.dependencies.length !== 2) fail('Invalid Cortier Design installation metadata');
-if (!readme.includes('https://cortier.github.io/codex-plugins/launch.html#codex%3A%2F%2Fnew%3Fprompt%3D')) fail('README installation link is missing');
+if (!readme.includes('https://plugins.cortier.com/design#codex%3A%2F%2Fnew%3Fprompt%3D')) fail('README installation link is missing');
 
 console.log('Marketplace, plugin, designer-only skills, installation metadata, and generated guidance are valid.');

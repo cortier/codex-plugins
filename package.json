@@ -3,7 +3,20 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "tsc -p tsconfig.json",
     "generate": "node scripts/generate-installation.mjs",
+    "synth": "cdk synth",
+    "test": "vitest run",
     "validate": "node .github/scripts/validate.mjs"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.152",
+    "@types/node": "^24.3.0",
+    "aws-cdk": "^2.1029.3",
+    "aws-cdk-lib": "^2.217.0",
+    "constructs": "^10.4.2",
+    "esbuild": "^0.25.9",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   }
 }

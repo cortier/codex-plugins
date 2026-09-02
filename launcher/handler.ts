@@ -1,4 +1,6 @@
-<!doctype html>
+import type { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
+
+const page = `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -44,4 +46,21 @@
       }
     </script>
   </body>
-</html>
+</html>`;
+
+export const handler = async (event: APIGatewayProxyEventV2): Promise<APIGatewayProxyStructuredResultV2> => {
+  if (event.requestContext.http.method !== 'GET' || event.rawPath !== '/design') {
+    return { statusCode: 404, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' }, body: JSON.stringify({ error: 'not_found' }) };
+  }
+  return {
+    statusCode: 200,
+    headers: {
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'public, max-age=300',
+      'content-security-policy': "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'",
+      'referrer-policy': 'no-referrer',
+      'x-content-type-options': 'nosniff',
+    },
+    body: page,
+  };
+};
