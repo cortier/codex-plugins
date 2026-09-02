@@ -1,6 +1,6 @@
 ---
 name: generating-installation-prompts
-description: Regenerate Cortier plugin installation prompts and README links whenever installation templates, plugin installation metadata, authentication guidance, dependency notes, or other setup instructions change.
+description: Regenerate Cortier plugin installation prompts and launcher payloads whenever installation templates, plugin installation metadata, authentication guidance, dependency notes, or other setup instructions change.
 ---
 
 # Generate Installation Prompts
@@ -21,4 +21,4 @@ Treat these as generator inputs:
 - Marketplace plugin entries or source paths
 - Any authentication, dependency, account, or user-facing setup guidance
 
-Review the resulting `plugins/*/INSTALL.md` and `README.md` changes and include them with the source change. Do not edit generated installation prompts or README installation links directly; update their source inputs and regenerate them.
+Review the resulting `plugins/*/INSTALL.md` and `launcher/generated/*.ts` changes and include them with the source change. Do not edit generated installation prompts or launcher payloads directly; update their source inputs and regenerate them.

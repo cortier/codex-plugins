@@ -30,6 +30,8 @@ describe('plugin launcher', () => {
     expect(response.headers?.['referrer-policy']).toBe('no-referrer');
     expect(response.body).toContain("url.protocol !== 'codex:'");
     expect(response.body).toContain("url.hostname !== 'new'");
+    expect(response.body).toContain('codex://new?prompt=Set+up+the+complete+Cortier+Design+environment');
+    expect(response.body).not.toContain('location.hash');
   });
 
   it.each([

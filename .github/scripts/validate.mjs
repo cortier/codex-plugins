@@ -9,13 +9,14 @@ const marketplace = readJson(join(root, '.agents', 'plugins', 'marketplace.json'
 if (marketplace.name !== 'cortier') fail('Marketplace name must be cortier');
 if (!Array.isArray(marketplace.plugins) || marketplace.plugins.length === 0) fail('Marketplace must contain plugins');
 const readme = readFileSync(join(root, 'README.md'), 'utf8');
+if (/BEGIN GENERATED INSTALLATION|## Install|plugins\.cortier\.com\/design/.test(readme)) fail('README must not contain installation guidance');
 for (const plugin of marketplace.plugins) {
   if (plugin.source?.source !== 'local' || typeof plugin.source.path !== 'string') fail(`Invalid marketplace entry: ${plugin.name}`);
-  const root = join(process.cwd(), plugin.source.path);
-  const pluginManifest = readJson(join(root, '.codex-plugin', 'plugin.json'));
+  const pluginDirectory = join(process.cwd(), plugin.source.path);
+  const pluginManifest = readJson(join(pluginDirectory, '.codex-plugin', 'plugin.json'));
   if (pluginManifest.name !== plugin.name) fail(`Manifest name does not match marketplace entry: ${plugin.name}`);
-  if (!existsSync(join(root, 'installation.json')) || !existsSync(join(root, 'INSTALL.md'))) fail(`Installation guidance is missing: ${plugin.name}`);
-  if (!readme.includes(`./plugins/${plugin.name}/INSTALL.md`)) fail(`README fallback is missing: ${plugin.name}`);
+  if (!existsSync(join(pluginDirectory, 'installation.json')) || !existsSync(join(pluginDirectory, 'INSTALL.md'))) fail(`Installation guidance is missing: ${plugin.name}`);
+  if (!existsSync(join(root, 'launcher', 'generated', `${plugin.name}.ts`))) fail(`Generated launcher prompt is missing: ${plugin.name}`);
 }
 const entry = marketplace.plugins?.find((plugin) => plugin.name === 'cortier-design');
 if (!entry || entry.source?.source !== 'local' || entry.source?.path !== './plugins/cortier-design') fail('Invalid Cortier Design marketplace entry');
@@ -44,6 +45,7 @@ for (const required of ['cortier/codex-plugins', 'Cortier Design', 'Figma', 'Mob
 }
 const installation = readJson(join(pluginRoot, 'installation.json'));
 if (!Array.isArray(installation.dependencies) || installation.dependencies.length !== 2) fail('Invalid Cortier Design installation metadata');
-if (!readme.includes('https://plugins.cortier.com/design#codex%3A%2F%2Fnew%3Fprompt%3D')) fail('README installation link is missing');
+const launcherPrompt = readFileSync(join(root, 'launcher', 'generated', 'cortier-design.ts'), 'utf8');
+if (!launcherPrompt.includes('codex://new?prompt=') || !launcherPrompt.includes('Set+up+the+complete+Cortier+Design+environment')) fail('Launcher installation prompt is invalid');
 
 console.log('Marketplace, plugin, designer-only skills, installation metadata, and generated guidance are valid.');

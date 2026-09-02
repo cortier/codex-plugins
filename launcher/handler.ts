@@ -1,4 +1,5 @@
 import type { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
+import { installationUrl } from './generated/cortier-design.js';
 
 const page = `<!doctype html>
 <html lang="en">
@@ -31,7 +32,7 @@ const page = `<!doctype html>
       const fallback = document.querySelector('#fallback');
       const prompt = document.querySelector('#prompt');
       try {
-        const target = decodeURIComponent(location.hash.slice(1));
+        const target = ${JSON.stringify(installationUrl)};
         const url = new URL(target);
         const keys = [...url.searchParams.keys()];
         if (url.protocol !== 'codex:' || url.hostname !== 'new' || keys.length !== 1 || keys[0] !== 'prompt' || !url.searchParams.get('prompt')) throw new Error('Invalid installation link');
