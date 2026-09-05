@@ -46,6 +46,6 @@ for (const required of ['cortier/codex-plugins', 'Cortier Design', 'Figma', 'Mob
 const installation = readJson(join(pluginRoot, 'installation.json'));
 if (!Array.isArray(installation.dependencies) || installation.dependencies.length !== 2) fail('Invalid Cortier Design installation metadata');
 const launcherPrompt = readFileSync(join(root, 'launcher', 'generated', 'cortier-design.ts'), 'utf8');
-if (!launcherPrompt.includes('codex://new?prompt=') || !launcherPrompt.includes('Set+up+the+complete+Cortier+Design+environment')) fail('Launcher installation prompt is invalid');
+if (!launcherPrompt.includes('codex://new?prompt=Begin+in+Spanish') || !launcherPrompt.includes('Set+up+the+complete+Cortier+Design+environment')) fail('Launcher installation prompt is invalid');
 
 console.log('Marketplace, plugin, designer-only skills, installation metadata, and generated guidance are valid.');

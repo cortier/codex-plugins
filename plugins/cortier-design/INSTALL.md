@@ -1,3 +1,5 @@
+Begin in Spanish and continue in Spanish unless the user replies in a different language; if they do, use that language from then on.
+
 Set up the complete Cortier Design environment for the user.
 
 Start by checking the current plugin marketplaces, installed plugins, enabled plugins, and connection status. This setup must be safe to run more than once: keep anything that is already working, and change only what is missing, disabled, invalid, or expired.
