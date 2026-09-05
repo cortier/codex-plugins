@@ -1,28 +1,26 @@
-Begin in Spanish and continue in Spanish unless the user replies in a different language; if they do, use that language from then on.
+Configura el entorno completo de {{PRIMARY_PLUGIN_NAME}} para el usuario.
 
-Set up the complete {{PRIMARY_PLUGIN_NAME}} environment for the user.
+Primero revisa los marketplaces de plugins disponibles, los plugins instalados y habilitados, y el estado de las conexiones. Esta configuración debe poder ejecutarse varias veces de forma segura: conserva todo lo que ya funcione correctamente y cambia únicamente lo que falte, esté deshabilitado, sea inválido o haya vencido.
 
-Start by checking the current plugin marketplaces, installed plugins, enabled plugins, and connection status. This setup must be safe to run more than once: keep anything that is already working, and change only what is missing, disabled, invalid, or expired.
-
-Make sure the public Cortier plugin marketplace from `https://github.com/cortier/codex-plugins` is available from its default branch. Add it only if it is missing. For each plugin below, keep it unchanged when it is already installed and enabled, install it only when it is missing, and enable it only when it is disabled. Never uninstall or reinstall a correctly configured plugin.
+Asegúrate de que el marketplace público de Cortier ubicado en `https://github.com/cortier/codex-plugins` esté disponible desde su rama predeterminada. Agrégalo solo si falta. Para cada plugin de la siguiente lista, no hagas cambios si ya está instalado y habilitado; instálalo solo si falta y habilítalo solo si está deshabilitado. Nunca desinstales ni vuelvas a instalar un plugin que ya esté configurado correctamente.
 
 {{PLUGIN_LIST}}
 
-Complete every automatic setup step before asking the user to do anything. Keep every valid signed-in connection unchanged, and start OAuth (the provider-controlled sign-in process) only for a connection that is missing, invalid, or expired.
+Completa todos los pasos automáticos posibles antes de pedirle al usuario que haga algo. Conserva todas las conexiones válidas que ya tengan una sesión iniciada e inicia OAuth (el proceso de inicio de sesión controlado por el proveedor) únicamente cuando una conexión falte, sea inválida o haya vencido.
 
-If the user must take action, show all remaining actions for every plugin together in one clear reply after the automatic setup is finished. Do not ask the user to connect one plugin at a time, and do not split the instructions across multiple replies. Use a short checklist in plain language that:
+Si el usuario debe realizar alguna acción, muestra todas las acciones pendientes para todos los plugins juntas en una sola respuesta clara después de terminar la configuración automática. No le pidas al usuario que conecte los plugins uno por uno y no dividas las instrucciones en varias respuestas. Usa una lista breve y fácil de entender que:
 
-- names each plugin that still needs attention;
-- tells the user where to select **Connect** in Codex when Codex cannot start that connection automatically;
-- repeats the user instruction shown beneath that plugin;
-- explains that the provider controls the sign-in window and that the user must choose the account themselves;
-- never asks the user to paste a password, code, credential, or token into the conversation; and
-- asks the user to reply once, after completing every item in the checklist.
+- indique el nombre de cada plugin que requiera atención;
+- explique dónde seleccionar **Conectar** en Codex cuando Codex no pueda iniciar esa conexión automáticamente;
+- repita la instrucción para el usuario que aparece debajo de ese plugin;
+- explique que el proveedor controla la ventana de inicio de sesión y que el usuario debe elegir la cuenta por sí mismo;
+- nunca le pida al usuario que pegue una contraseña, código, credencial o token en la conversación; y
+- le pida al usuario que responda una sola vez después de completar todos los elementos de la lista.
 
-Wait for that single reply before continuing. Then verify all connections together. If anything is still incomplete, send one updated checklist containing every remaining user action instead of handling plugins one by one.
+Espera esa única respuesta antes de continuar. Después, verifica todas las conexiones juntas. Si algo sigue incompleto, envía una sola lista actualizada con todas las acciones pendientes en lugar de atender los plugins uno por uno.
 
-After all {{PLUGIN_COUNT}} plugins are installed and enabled and every required connection is authenticated, automatically create a new Codex task to perform the final verification. Use the current project when one is available; otherwise create a projectless task. Use exactly this verification prompt:
+Cuando los {{PLUGIN_COUNT}} plugins estén instalados y habilitados y todas las conexiones necesarias estén autenticadas, crea automáticamente una nueva tarea de Codex para realizar la verificación final. Usa el proyecto actual cuando esté disponible; de lo contrario, crea una tarea sin proyecto. Usa exactamente este prompt de verificación:
 
 "Verifica el entorno de Cortier Design sin cambiar ninguna configuración ni información del usuario. Confirma que Cortier Design, Figma y Mobbin estén instalados, habilitados, conectados y disponibles en Codex. Revisa internamente la lista de herramientas MCP de cada plugin para confirmar que sus funciones estén disponibles, pero no muestres los nombres de esas herramientas al usuario. Realiza únicamente comprobaciones inofensivas y de solo lectura para cada plugin. No edites archivos de Figma, no cambies diseños, no escribas información ni realices acciones destructivas. La respuesta final debe ser fácil de entender y mostrar solamente los nombres de los tres plugins y un estado sencillo para cada uno: Listo o Requiere atención. Si un plugin requiere atención, agrega una explicación breve y clara, y termina con una sola lista que reúna todas las acciones pendientes para el usuario. No muestres identificadores de plugins o marketplaces, nombres de MCP o herramientas, comandos, direcciones web, tokens, registros ni otros detalles técnicos. Indica que el entorno está listo únicamente cuando los tres plugins hayan superado la verificación."
 
-After creating the verification task, tell the user in one short sentence that setup is finished and the verification task has started. Do not list technical details or tools in the setup conversation.
+Después de crear la tarea de verificación, dile al usuario en una sola frase breve que la configuración terminó y que la tarea de verificación comenzó. No muestres detalles técnicos ni herramientas en la conversación de configuración.

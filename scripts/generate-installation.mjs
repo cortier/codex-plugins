@@ -33,18 +33,18 @@ for (const entry of marketplace.plugins ?? []) {
 
   const primaryName = manifest.interface?.displayName;
   if (typeof primaryName !== 'string' || primaryName.trim() === '') fail(`${entry.name} manifest must define interface.displayName`);
-  const plugins = [{ name: primaryName, source: 'the Cortier marketplace', ...installation.primary }];
+  const plugins = [{ name: primaryName, source: 'el marketplace de Cortier', ...installation.primary }];
   for (const [index, dependency] of installation.dependencies.entries()) {
     if (!dependency || typeof dependency !== 'object' || Array.isArray(dependency)) fail(`${entry.name}.dependencies[${index}] must be an object`);
     assertKeys(dependency, ['name', 'userInstructions'], `${entry.name}.dependencies[${index}]`);
     if (typeof dependency.name !== 'string' || dependency.name.trim() === '') fail(`${entry.name}.dependencies[${index}].name must be a nonempty string`);
     assertUserInstructions(dependency.userInstructions, `${entry.name}.dependencies[${index}]`);
-    plugins.push({ name: dependency.name.trim(), source: 'the Plugins Directory', userInstructions: dependency.userInstructions });
+    plugins.push({ name: dependency.name.trim(), source: 'el Directorio de Plugins', userInstructions: dependency.userInstructions });
   }
 
   const pluginList = plugins.map((plugin) => [
-    `- ${plugin.name} — install from ${plugin.source}.`,
-    ...plugin.userInstructions.map((instruction) => `  - User instruction: ${instruction.trim()}`),
+    `- ${plugin.name} — instalar desde ${plugin.source}.`,
+    ...plugin.userInstructions.map((instruction) => `  - Instrucción para el usuario: ${instruction.trim()}`),
   ].join('\n')).join('\n');
   const prompt = template
     .replaceAll('{{PRIMARY_PLUGIN_NAME}}', primaryName.trim())

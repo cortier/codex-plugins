@@ -1,20 +1,20 @@
 {
   "primary": {
     "userInstructions": [
-      "The media@cortier.com account must be used to authenticate to the MCP server."
+      "Debes usar la cuenta media@cortier.com para iniciar sesión en el servidor MCP."
     ]
   },
   "dependencies": [
     {
       "name": "Figma",
       "userInstructions": [
-        "The media@cortier.com account must be used to authenticate to the MCP server."
+        "Debes usar la cuenta media@cortier.com para iniciar sesión en el servidor MCP."
       ]
     },
     {
       "name": "Mobbin",
       "userInstructions": [
-        "The media@cortier.com account must be used to authenticate to the MCP server."
+        "Debes usar la cuenta media@cortier.com para iniciar sesión en el servidor MCP."
       ]
     }
   ]
