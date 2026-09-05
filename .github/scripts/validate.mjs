@@ -40,7 +40,7 @@ for (const path of files(join(pluginRoot, 'skills'))) {
 }
 
 const install = readFileSync(join(pluginRoot, 'INSTALL.md'), 'utf8').trim();
-for (const required of ['cortier/codex-plugins', 'Cortier Design', 'Figma', 'Mobbin', 'media@cortier.com', 'OAuth', 'list the MCP tools']) {
+for (const required of ['cortier/codex-plugins', 'Cortier Design', 'Figma', 'Mobbin', 'media@cortier.com', 'OAuth', 'lista de herramientas MCP']) {
   if (!install.includes(required)) fail(`INSTALL.md is missing: ${required}`);
 }
 const installation = readJson(join(pluginRoot, 'installation.json'));
